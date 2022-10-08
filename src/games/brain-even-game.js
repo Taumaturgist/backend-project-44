@@ -1,20 +1,6 @@
 import readlineSync, { setDefaultOptions } from 'readline-sync';
 
-let userName = ''; // overwrite with setUserName();
-
-const startGame = () => {
-  console.log('Welcome to Brain Games');
-  setUserName();
-  console.log('Answer "yes" if the number is even, otherwise answer "no".');
-  gameLoop(0);
-};
-
-const setUserName = () => {
-  userName = readlineSync.question('May I have your name? ');
-  console.log(`Hello, ${userName}!`);  
-};
-
-const gameLoop = (counter) => {
+const gameLoopEven = (counter, userName) => {
   const randomInt = getRandomInt(1, 100);
   const evenCheck = randomInt % 2;
   const userAnswer = readlineSync.question(`Question: ${randomInt}\nYour answer: `);
@@ -32,7 +18,7 @@ const gameLoop = (counter) => {
 
   if (counter >= 3) {
     console.log(`Congratulations, ${userName}!`);
-  } else gameLoop(counter);
+  } else gameLoopEven(counter, userName);
 };
 
 const getRandomInt = (min, max) => {
@@ -41,4 +27,4 @@ const getRandomInt = (min, max) => {
   return Math.floor(Math.random() * (max - min) + min);
 };
 
-export default startGame;
+export default gameLoopEven;

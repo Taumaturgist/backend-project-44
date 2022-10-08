@@ -2,4 +2,4 @@
 
 import startGame from '../src/index.js';
 
-startGame(0);
+startGame(1);

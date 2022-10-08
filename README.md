@@ -1,4 +1,9 @@
+This is my Brain Games project @Hexlet Full-Stack Developer course
+Made with node.js
+See my Hexlet profile at https://ru.hexlet.io/u/thaumaturgist
+
 Brain-Even asciinema link: https://asciinema.org/a/526637
+Brain-Calc asciinema link: https://asciinema.org/a/526656
 
 ### Hexlet tests and linter status:
 [![Actions Status](https://github.com/Taumaturgist/backend-project-44/workflows/hexlet-check/badge.svg)](https://github.com/Taumaturgist/backend-project-44/actions)

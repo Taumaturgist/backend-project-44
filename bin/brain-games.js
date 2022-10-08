@@ -1,2 +1,5 @@
 #!/usr/bin/env node
-console.log('Welcome to Brain Games, Mortal!');
+
+import greet from '../src/cli.js';
+
+greet();

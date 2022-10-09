@@ -5,12 +5,24 @@ const gameLoopCalc = (counter, userName) => {
   const randomB = getRandomInt(1, 100);
   const randomOperand = getRandomOperand();
 
-  const userAnswer = readlineSync.question(`Question: ${randomA} ${randomOperand} ${randomB}\nYour answer: `);
-  const rightAnswer = eval(`${randomA} ${randomOperand} ${randomB}`);
+  const userAnswer = readlineSync.question(`Question: ${randomA} ${randomOperand} ${randomB}\nYour answer: `);  
+  let rightAnswer = 0;
+  switch(randomOperand)
+  {
+    case '+':
+      rightAnswer = randomA + randomB;
+      break;
+    case '-':
+      rightAnswer = randomA - randomB;
+      break;
+    case '*':
+      rightAnswer = randomA * randomB;
+      break;
+  }
 
   let response = '';
 
-  if (Number(userAnswer) === Number(rightAnswer)) {
+  if (Number(userAnswer) === rightAnswer) {
     response = 'Correct!';
     counter += 1;
   } else {

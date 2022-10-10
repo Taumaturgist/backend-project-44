@@ -1,35 +1,9 @@
-import readlineSync, { setDefaultOptions } from 'readline-sync';
-
-const gameLoopPrime = (counter, userName) => {
-  const randomInt = getRandomInt(1, 100);
-  const primeCheck = isPrime(randomInt);
-
-  const userAnswer = readlineSync.question(`Question: ${randomInt}\nYour answer: `);
-  let response = '';
-  let gameIsOver = false;
-
-  if ((primeCheck && userAnswer === 'yes') || (!primeCheck && userAnswer === 'no')) {
-    response = 'Correct!';
-    counter += 1;
-  } else {
-    primeCheck ? response = `'${userAnswer}' is wrong answer ;(. Correct answer was 'yes'.\nLet's try again, ${userName}!`
-      : response = `'${userAnswer}' is wrong answer ;(. Correct answer was 'no'.\nLet's try again, ${userName}!`;
-    gameIsOver = true;
-  }
-  console.log(response);
-
-  if (!gameIsOver) {
-    if (counter >= 3) {
-      console.log(`Congratulations, ${userName}!`);
-    } else gameLoopPrime(counter, userName);
-  }
-  
-};
+import readlineSync from 'readline-sync';
 
 const getRandomInt = (min, max) => {
-  min = Math.ceil(min);
-  max = Math.floor(max);
-  return Math.floor(Math.random() * (max - min) + min);
+  const minCeil = Math.ceil(min);
+  const maxFloor = Math.floor(max);
+  return Math.floor(Math.random() * (maxFloor - minCeil) + minCeil);
 };
 
 const isPrime = (num) => {
@@ -40,6 +14,33 @@ const isPrime = (num) => {
   }
 
   return true;
+};
+
+const gameLoopPrime = (counter, userName) => {
+  let internalCounter = counter;
+  const randomInt = getRandomInt(1, 100);
+  const primeCheck = isPrime(randomInt);
+
+  const userAnswer = readlineSync.question(`Question: ${randomInt}\nYour answer: `);
+  let response = '';
+  let gameIsOver = false;
+
+  if ((primeCheck && userAnswer === 'yes') || (!primeCheck && userAnswer === 'no')) {
+    response = 'Correct!';
+    internalCounter += 1;
+  } else {
+    const responseA = `'${userAnswer}' is wrong answer ;(. Correct answer was 'yes'.\nLet's try again, ${userName}!`;
+    const responseB = `'${userAnswer}' is wrong answer ;(. Correct answer was 'no'.\nLet's try again, ${userName}!`;
+    response = (primeCheck ? responseA : responseB);
+    gameIsOver = true;
+  }
+  console.log(response);
+
+  if (!gameIsOver) {
+    if (internalCounter >= 3) {
+      console.log(`Congratulations, ${userName}!`);
+    } else gameLoopPrime(internalCounter, userName);
+  }
 };
 
 export default gameLoopPrime;

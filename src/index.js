@@ -1,4 +1,4 @@
-import readlineSync, { setDefaultOptions } from 'readline-sync';
+import readlineSync from 'readline-sync';
 import gameLoopEven from './games/brain-even-game.js';
 import gameLoopCalc from './games/brain-calc-game.js';
 import gameLoopGCD from './games/brain-gcd-game.js';
@@ -8,12 +8,6 @@ import gameLoopPrime from './games/brain-prime-game.js';
 let userName = ''; // overwrite with setUserName();
 
 // gameNum: 0 - brain-even; 1 - brain-calc; 2 - brain-gcd; 3 - brain-progression; 4 - brain-prime
-const startGame = (gameNum) => {
-  console.log('Welcome to the Brain Games');
-  setUserName();
-  introduceRulesAndLaunch(gameNum);
-};
-
 const setUserName = () => {
   userName = readlineSync.question('May I have your name? ');
   console.log(`Hello, ${userName}!`);
@@ -40,7 +34,16 @@ const introduceRulesAndLaunch = (gameNum) => {
     case 4:
       console.log('Answer "yes" if given number is prime. Otherwise answer "no".');
       gameLoopPrime(0, userName);
+      break;
+    default:
+      break;
   }
+};
+
+const startGame = (gameNum) => {
+  console.log('Welcome to the Brain Games');
+  setUserName();
+  introduceRulesAndLaunch(gameNum);
 };
 
 export default startGame;

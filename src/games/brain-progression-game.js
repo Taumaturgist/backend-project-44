@@ -1,6 +1,13 @@
-import readlineSync, { setDefaultOptions } from 'readline-sync';
+import readlineSync from 'readline-sync';
+
+const getRandomInt = (min, max) => {
+  const minCeil = Math.ceil(min);
+  const maxFloor = Math.floor(max);
+  return Math.floor(Math.random() * (maxFloor - minCeil) + minCeil);
+};
 
 const gameLoopProgression = (counter, userName) => {
+  let internalCounter = counter;
   const progrInit = getRandomInt(2, 21);
   const progrAmount = getRandomInt(7, 14);
   const progrStep = getRandomInt(2, 6);
@@ -26,7 +33,7 @@ const gameLoopProgression = (counter, userName) => {
   let gameIsOver = false;
   if (userAnswer === String(memberCheck)) {
     response = 'Correct!';
-    counter += 1;
+    internalCounter += 1;
   } else {
     response = `'${userAnswer}' is wrong answer ;(. Correct answer was '${memberCheck}'.\nLet's try again, ${userName}!`;
     gameIsOver = true;
@@ -34,17 +41,10 @@ const gameLoopProgression = (counter, userName) => {
   console.log(response);
 
   if (!gameIsOver) {
-    if (counter >= 3) {
+    if (internalCounter >= 3) {
       console.log(`Congratulations, ${userName}!`);
-    } else gameLoopProgression(counter, userName);
+    } else gameLoopProgression(internalCounter, userName);
   }
-  
-};
-
-const getRandomInt = (min, max) => {
-  min = Math.ceil(min);
-  max = Math.floor(max);
-  return Math.floor(Math.random() * (max - min) + min);
 };
 
 export default gameLoopProgression;

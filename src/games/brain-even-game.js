@@ -1,6 +1,17 @@
-import readlineSync, { setDefaultOptions } from 'readline-sync';
+import readlineSync from 'readline-sync';
+
+const getRandomInt = (min, max) => {
+  const minCeil = Math.ceil(min);
+  const maxFloor = Math.floor(max);
+  return Math.floor(Math.random() * (maxFloor - minCeil) + minCeil);
+};
+
+// this line fails linter check because of having length of 115 (max 100 is allowed)
+// const getRandomInt = (min, max) =>
+// Math.floor(Math.random() * (Math.floor(max) - Math.ceil(min)) + Math.ceil(min));
 
 const gameLoopEven = (counter, userName) => {
+  let internalCounter = counter;
   const randomInt = getRandomInt(1, 100);
   const evenCheck = randomInt % 2;
   const userAnswer = readlineSync.question(`Question: ${randomInt}\nYour answer: `);
@@ -9,26 +20,20 @@ const gameLoopEven = (counter, userName) => {
 
   if ((evenCheck === 0 && userAnswer === 'yes') || (evenCheck !== 0 && userAnswer === 'no')) {
     response = 'Correct!';
-    counter += 1;
+    internalCounter += 1;
   } else {
-    evenCheck === 0 ? response = `'${userAnswer}' is wrong answer ;(. Correct answer was 'yes'.\nLet's try again, ${userName}!`
-      : response = `'${userAnswer}' is wrong answer ;(. Correct answer was 'no'.\nLet's try again, ${userName}!`;
+    const responseA = `'${userAnswer}' is wrong answer ;(. Correct answer was 'yes'.\nLet's try again, ${userName}!`;
+    const responseB = `'${userAnswer}' is wrong answer ;(. Correct answer was 'no'.\nLet's try again, ${userName}!`;
+    response = (evenCheck === 0 ? responseA : responseB);
     gameIsOver = true;
   }
   console.log(response);
 
   if (!gameIsOver) {
-    if (counter >= 3) {
+    if (internalCounter >= 3) {
       console.log(`Congratulations, ${userName}!`);
-    } else gameLoopEven(counter, userName);
+    } else gameLoopEven(internalCounter, userName);
   }
-  
-};
-
-const getRandomInt = (min, max) => {
-  min = Math.ceil(min);
-  max = Math.floor(max);
-  return Math.floor(Math.random() * (max - min) + min);
 };
 
 export default gameLoopEven;

@@ -10,6 +10,8 @@ Brain-GCD asciinema link: https://asciinema.org/a/527068
 
 Brain-Progression asciinema link: https://asciinema.org/a/527087
 
+Brain-Prime asciinema link: https://asciinema.org/a/527102
+
 See my Hexlet profile at https://ru.hexlet.io/u/thaumaturgist
 
 ### Hexlet tests and linter status:

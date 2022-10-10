@@ -2,6 +2,7 @@ import readlineSync, { setDefaultOptions } from 'readline-sync';
 import gameLoopEven from './games/brain-even-game.js';
 import gameLoopCalc from './games/brain-calc-game.js';
 import gameLoopGCD from './games/brain-gcd-game.js';
+import gameLoopProgression from './games/brain-progression-game.js';
 
 let userName = ''; // overwrite with setUserName();
 
@@ -30,6 +31,10 @@ const introduceRulesAndLaunch = (gameNum) => {
     case 2:
       console.log('Find the greatest common divisor of given numbers.');
       gameLoopGCD(0, userName);
+      break;
+    case 3:
+      console.log('What number is missing in the progression?');
+      gameLoopProgression(0, userName);
       break;
   }
 };

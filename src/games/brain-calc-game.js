@@ -20,19 +20,22 @@ const gameLoopCalc = (counter, userName) => {
   }
 
   let response = '';
+  let gameIsOver = false;
 
   if (Number(userAnswer) === rightAnswer) {
     response = 'Correct!';
     counter += 1;
   } else {
     response = `'${userAnswer}' is wrong answer ;(. Correct answer was '${rightAnswer}'.\nLet's try again, ${userName}!`;
-    counter = 0;
+    gameIsOver = true;
   }
   console.log(response);
 
-  if (counter >= 3) {
-    console.log(`Congratulations, ${userName}!`);
+  if (!gameIsOver) {
+    if (counter >= 3) {
+      console.log(`Congratulations, ${userName}!`);
   } else gameLoopCalc(counter, userName);
+  }
 };
 
 const getRandomInt = (min, max) => {

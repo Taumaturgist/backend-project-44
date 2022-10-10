@@ -6,6 +6,7 @@ const gameLoopPrime = (counter, userName) => {
 
   const userAnswer = readlineSync.question(`Question: ${randomInt}\nYour answer: `);
   let response = '';
+  let gameIsOver = false;
 
   if ((primeCheck && userAnswer === 'yes') || (!primeCheck && userAnswer === 'no')) {
     response = 'Correct!';
@@ -13,13 +14,16 @@ const gameLoopPrime = (counter, userName) => {
   } else {
     primeCheck ? response = `'${userAnswer}' is wrong answer ;(. Correct answer was 'yes'.\nLet's try again, ${userName}!`
       : response = `'${userAnswer}' is wrong answer ;(. Correct answer was 'no'.\nLet's try again, ${userName}!`;
-    counter = 0;
+    gameIsOver = true;
   }
   console.log(response);
 
-  if (counter >= 3) {
-    console.log(`Congratulations, ${userName}!`);
-  } else gameLoopPrime(counter, userName);
+  if (!gameIsOver) {
+    if (counter >= 3) {
+      console.log(`Congratulations, ${userName}!`);
+    } else gameLoopPrime(counter, userName);
+  }
+  
 };
 
 const getRandomInt = (min, max) => {

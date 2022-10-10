@@ -23,18 +23,22 @@ const gameLoopProgression = (counter, userName) => {
   const userAnswer = readlineSync.question(`Question: ${progressionStr}\nYour answer: `);
 
   let response = '';
+  let gameIsOver = false;
   if (userAnswer === String(memberCheck)) {
     response = 'Correct!';
     counter += 1;
   } else {
     response = `'${userAnswer}' is wrong answer ;(. Correct answer was '${memberCheck}'.\nLet's try again, ${userName}!`;
-    counter = 0;
+    gameIsOver = true;
   }
   console.log(response);
 
-  if (counter >= 3) {
-    console.log(`Congratulations, ${userName}!`);
-  } else gameLoopProgression(counter, userName);
+  if (!gameIsOver) {
+    if (counter >= 3) {
+      console.log(`Congratulations, ${userName}!`);
+    } else gameLoopProgression(counter, userName);
+  }
+  
 };
 
 const getRandomInt = (min, max) => {

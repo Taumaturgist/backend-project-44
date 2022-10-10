@@ -8,18 +8,22 @@ const gameLoopGCD = (counter, userName) => {
   const userAnswer = readlineSync.question(`Question: ${randomA} ${randomB}\nYour answer: `);
 
   let response = '';
+  let gameIsOver = false;
   if (userAnswer === String(gcdAB)) {
     response = 'Correct!';
     counter += 1;
   } else {
     response = `'${userAnswer}' is wrong answer ;(. Correct answer was '${gcdAB}'.\nLet's try again, ${userName}!`;
-    counter = 0;
+    gameIsOver = true;
   }
   console.log(response);
 
-  if (counter >= 3) {
-    console.log(`Congratulations, ${userName}!`);
-  } else gameLoopGCD(counter, userName);
+  if (!gameIsOver) {
+    if (counter >= 3) {
+      console.log(`Congratulations, ${userName}!`);
+    } else gameLoopGCD(counter, userName);
+  }
+  
 };
 
 const getRandomInt = (min, max) => {

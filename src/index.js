@@ -9,7 +9,7 @@ let userName = ''; // overwrite with setUserName();
 
 // gameNum: 0 - brain-even; 1 - brain-calc; 2 - brain-gcd; 3 - brain-progression; 4 - brain-prime
 const startGame = (gameNum) => {
-  console.log('Welcome to Brain Games');
+  console.log('Welcome to the Brain Games');
   setUserName();
   introduceRulesAndLaunch(gameNum);
 };

@@ -1,10 +1,14 @@
 This is my Brain Games project @Hexlet Full-Stack Developer course, made with node.js
 
-See my Hexlet profile at https://ru.hexlet.io/u/thaumaturgist
+Project description @Hexlet: https://ru.hexlet.io/programs/fullstack-javascript/projects/44
 
 Brain-Even asciinema link: https://asciinema.org/a/526637
 
 Brain-Calc asciinema link: https://asciinema.org/a/526656
+
+Brain-GCD asciinema link: https://asciinema.org/a/527068
+
+See my Hexlet profile at https://ru.hexlet.io/u/thaumaturgist
 
 ### Hexlet tests and linter status:
 [![Actions Status](https://github.com/Taumaturgist/backend-project-44/workflows/hexlet-check/badge.svg)](https://github.com/Taumaturgist/backend-project-44/actions)

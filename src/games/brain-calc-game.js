@@ -5,10 +5,9 @@ const gameLoopCalc = (counter, userName) => {
   const randomB = getRandomInt(1, 100);
   const randomOperand = getRandomOperand();
 
-  const userAnswer = readlineSync.question(`Question: ${randomA} ${randomOperand} ${randomB}\nYour answer: `);  
+  const userAnswer = readlineSync.question(`Question: ${randomA} ${randomOperand} ${randomB}\nYour answer: `);
   let rightAnswer = 0;
-  switch(randomOperand)
-  {
+  switch (randomOperand) {
     case '+':
       rightAnswer = randomA + randomB;
       break;

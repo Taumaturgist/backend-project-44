@@ -1,8 +1,8 @@
 import readlineSync, { setDefaultOptions } from 'readline-sync';
 
 const greet = () => {
-  console.log('Welcome to Brain Games, Mortal!');
-  getUserName();
+  console.log('Welcome to Brain Games!');
+  //getUserName();
 };
 
 const getUserName = () => {
